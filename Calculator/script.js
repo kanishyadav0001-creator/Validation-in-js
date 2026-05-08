@@ -1,28 +1,30 @@
-function clearScreen () {
+function clearScreen() {
     document.getElementById("result").value = "";
 }
 
+// Appends the clicked button's value to the display
 function setScreenValue(value) {
-    const r = document.getElementById("result");
-    if (r.value === "Enter an expression " || r.value === "Invalid expression ") 
-        r.value = "";
-        r.value += value;
-
+  const r = document.getElementById("result");
+  if (r.value === "Enter an expression" || r.value === "Invalid expression") r.value = "";
+  r.value += value;
 }
 
+
+// Calculates and displays the result
 function calculateResult() {
     const resultElement = document.getElementById("result");
     const expression = resultElement.value.trim();
-}
 
-if (expression === '') {
-    resultElement.value = 'Enter an expreession';
-    return;
+    // Check for empty input
+    if (expression === '') {
+        resultElement.value = 'Enter an expression';
+        return;
+    }
 
-}
-
-try {
-    returnElement.value = eval(expression);
-} catch (e) {
-    returnElement.value = 'Invaild expression';
+    // Evaluate expression and handle errors
+    try {
+        resultElement.value = eval(expression);
+    } catch (e) {
+        resultElement.value = 'Invalid expression';
+    }
 }
